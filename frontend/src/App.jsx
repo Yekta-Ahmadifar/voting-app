@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import toast from "react-hot-toast";
 
-const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const contractABI = [
   {
     inputs: [
@@ -229,21 +229,7 @@ const App = () => {
                 {option} <br /> votes:
                 {votes[index]}
                 <button
-                  onClick={() => handleVote(index)}
-                  onMouseEnter={(e) => {
-                    if (option === "other") {
-                      const largura = window.innerWidth - 120;
-                      const altura = window.innerHeight - 50;
-                      const newX = Math.random() * largura;
-                      const newY = Math.random() * altura;
-
-                      const btn = e.currentTarget;
-                      btn.style.position = "absolute";
-                      btn.style.left = `${newX}px`;
-                      btn.style.top = `${newY}px`;
-                    }
-                  }}
-                >
+                  onClick={() => handleVote(index)}>
                   vote!
                 </button>
               </div>

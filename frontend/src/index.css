@@ -9,11 +9,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  background: linear-gradient(135deg, #2c363f,#e75a7c, #f2f5ea);
   height: 100%;
   color: white;
-  font-family: Pixelify Sans, sans-serif;
-  font-size: 23px;
+  font-family: 'Anton SC';
+  font-size: 25px;
 }
 
 .container {
@@ -37,12 +37,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
-  font-family: Inter, sans-serif;
+  font-family:  'Boldonse';
   margin: 10px;
 }
 
 button:hover {
-  background-color: #e2e8f0;
+  background-color: #e1ecf7;
 }
 
 .account-info {
