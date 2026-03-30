@@ -7,7 +7,8 @@ async function main() {
     "Italian", 
     "Japanese" , 
     "Mexican" , 
-    "Indian"]);
+    "Indian"
+  ]);
   await voting.waitForDeployment();
   const address = await voting.getAddress();
 

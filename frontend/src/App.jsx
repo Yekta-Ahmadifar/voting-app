@@ -140,6 +140,13 @@ const contractABI = [
   },
 ];
 
+const emojis ={
+  Italian: "\u{1F35D}",
+  Japanese: "\u{1F363}",
+  Mexican: "\u{1F32E}",
+  Indian: "\u{1F35B}",
+}
+
 const App = () => {
   const [connected, setConnected] = useState(false);
   const [account, setAccount] = useState("");
@@ -228,7 +235,7 @@ const App = () => {
             {options.map((option, index) => (
               <div key={index} className="option-item">
 
-                <h3>{option}</h3>
+                <h3>{emojis[option]} {option}</h3>
                  <p> Votes: {votes[index] ?? 0}</p>
                 
                 <button onClick={() => handleVote(index)}>
