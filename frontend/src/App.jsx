@@ -229,6 +229,7 @@ const App = () => {
                 {option} <br /> votes:
                 {votes[index]}
                 <button onClick={() => handleVote(index)}>
+                  vote
                 </button>
               </div>
             ))}
