@@ -215,7 +215,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>
-        who do you vote to enter in <br /> Subvisual's apprenticeship role?
+        vote for your favorite cuisine
       </h1>
 
       {!connected ? (
@@ -228,7 +228,7 @@ const App = () => {
             connected as: {account.slice(0, 6)}...{account.slice(-4)}
           </p>
 
-          <h2>vote for your favorite option:</h2>
+          
           <div className="options-list">
             {options.length === 0 && <div>loading options...</div>}
 
@@ -239,7 +239,7 @@ const App = () => {
                  <p> Votes: {votes[index] ?? 0}</p>
                 
                 <button onClick={() => handleVote(index)}>
-                  vote for {option}
+                  click to vote
                 </button>
               </div>
             ))}
