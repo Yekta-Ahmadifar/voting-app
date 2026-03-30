@@ -224,12 +224,15 @@ const App = () => {
           <h2>vote for your favorite option:</h2>
           <div className="options-list">
             {options.length === 0 && <div>loading options...</div>}
+
             {options.map((option, index) => (
               <div key={index} className="option-item">
-                {option} <br /> votes:
-                {votes[index]}
+
+                <h3>{option}</h3>
+                 <p> Votes: {votes[index] ?? 0}</p>
+                
                 <button onClick={() => handleVote(index)}>
-                  vote
+                  vote for {option}
                 </button>
               </div>
             ))}
