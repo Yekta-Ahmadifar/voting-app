@@ -228,7 +228,7 @@ const App = () => {
               <div key={index} className="option-item">
                 {option} <br /> votes:
                 {votes[index]}
-                <button Click={() => handleVote(index)}>
+                <button onClick={() => handleVote(index)}>
                 </button>
               </div>
             ))}
