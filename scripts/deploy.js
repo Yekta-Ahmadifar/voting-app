@@ -3,7 +3,11 @@ const { ethers } = pkg;
 
 async function main() {
   const Voting = await ethers.getContractFactory("Voting");
-  const voting = await Voting.deploy(["carolina", "other"]);
+  const voting = await Voting.deploy([
+    "Italian", 
+    "Japanese" , 
+    "Mexican" , 
+    "Indian"]);
   await voting.waitForDeployment();
   const address = await voting.getAddress();
 
