@@ -170,8 +170,8 @@ const App = () => {
       await loadContractData();
     } catch (err) {
       console.error("some error ocurred:", err);
-      setOptions(["carolina", "other"]);
-      setVotes([0, 0]);
+      setOptions(["Italian", "Japanese" , "Mexican" , "Indian"]);
+      setVotes([0, 0, 0, 0]);
     }
   };
 
@@ -184,8 +184,8 @@ const App = () => {
       setVotes(votesBN.map((v) => v.toNumber()));
     } catch (err) {
       console.error("the contract has an error:", err);
-      setOptions(["carolina", "other"]);
-      setVotes([0, 0]);
+      setOptions(["Italian", "Japanese" , "Mexican" , "Indian"]);
+      setVotes([0, 0, 0, 0]);
     }
   };
 
