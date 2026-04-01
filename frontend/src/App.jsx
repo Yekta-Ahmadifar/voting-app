@@ -152,6 +152,7 @@ const App = () => {
   const [account, setAccount] = useState("");
   const [options, setOptions] = useState([]);
   const [votes, setVotes] = useState([]);
+  const [showVotes , setShowVotes] = useState(false)
 
   const getContract = (signer = false) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -212,6 +213,19 @@ const App = () => {
     }
   };
 
+
+  const handelRevealVotes = async() => {
+    try{
+      const contract = getContract();
+      const updatedVotes = await contract.getVotes();
+      setVotes(updatedVotes.map((v) => v.toNumber()));
+      setShowVotes(true);
+    }catch (err) {
+      console.error("some error occured:" , err);
+      toast.err("could not reveal votes");
+    }
+  };
+
   return (
     <div className="container">
       <h1>
@@ -228,7 +242,6 @@ const App = () => {
             connected as: {account.slice(0, 6)}...{account.slice(-4)}
           </p>
 
-          
           <div className="options-list">
             {options.length === 0 && <div>loading options...</div>}
 
@@ -236,14 +249,22 @@ const App = () => {
               <div key={index} className="option-item">
 
                 <h3>{emojis[option]} {option}</h3>
-                 <p> Votes: {votes[index] ?? 0}</p>
-                
                 <button onClick={() => handleVote(index)}>
                   click to vote
                 </button>
+                {showVotes && (
+                  <p className="n-vote">
+                    number of votes: {votes[index] ?? 0} 
+                  </p>
+                )}
               </div>
             ))}
           </div>
+          <div className="rveal-b">
+                <button onClick={handelRevealVotes}>
+                  Reveal number of votes!
+                </button>
+          </div>      
         </div>
       )}
     </div>
