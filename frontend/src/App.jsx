@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import toast from "react-hot-toast";
 
+const API_BASE_URL = "https://fictional-guide-9757996v6gv7hpgp9-4000.app.github.dev/api";
 const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const contractABI = [
   {
@@ -185,11 +186,10 @@ const App = () => {
 
   const loadContractData = async () => {
     try {
-      const contract = getContract();
-      const candidates = await contract.getCandidates();
-      const votesBN = await contract.getVotes();
-      setOptions(candidates);
-      setVotes(votesBN.map((v) => v.toNumber()));
+      const res = await fetch("http://localhost:4000/api/results");
+      const data = await res.json();
+      setOptions(data.results.map((item) => item.candidate));
+      setVotes(data.results.map((item) => item.votes));
     } catch (err) {
       console.error("the contract has an error:", err);
       setOptions(["Italian", "Japanese" , "Mexican" , "Indian"]);
@@ -205,14 +205,17 @@ const App = () => {
       const tx = await contract.vote(optionIndex, { gasLimit: 300000 });
       await tx.wait();
 
-      const updatedVotes = await contract.getVotes();
-      setVotes(updatedVotes.map((v) => v.toNumber()));
+      const res = await fetch(`${API_BASE_URL}/votes`);
+      const data = await res.json();
+      
+      setVotes(data.votes);
+      setShowVotes(true);
+      toast.success("vote successful");
     } catch (err) {
       console.error("some error ocurred:", err);
       toast.error(`some error ocurred: ${err.message}`);
     }
   };
-
 
   const handelRevealVotes = async() => {
     try{
